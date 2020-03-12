@@ -5,4 +5,5 @@ class Booking
   field :date, type: Date, default: Time.now
   field :persons, type: Integer, default: 0
   field :description, type: String
+  index({ date: 1 }, { unique: true, name: "date_index" })
 end
