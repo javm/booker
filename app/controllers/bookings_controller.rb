@@ -16,6 +16,12 @@ class BookingsController < ApplicationController
   def show
   end
 
+  #GET /bookings/:owner
+  def owner
+    owner = params[:owner]
+    @bookings = Booking.where(:owner => owner)
+  end
+
   # POST /bookings
   # POST /bookings.json
   def create
@@ -52,6 +58,6 @@ class BookingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def booking_params
-      params.require(:booking).permit(:name, :date, :persons, :description)
+      params.require(:booking).permit(:name, :date, :persons, :description, :owner)
     end
 end
